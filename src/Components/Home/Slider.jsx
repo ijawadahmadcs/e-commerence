@@ -12,9 +12,9 @@ const images = [
 
 const Slider = () => {
   const [current, setCurrent] = useState(0);
- useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent(prev => (prev === images.length - 1 ? 0 : prev + 1));
+      setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }, 3000);
 
     return () => clearInterval(interval); // cleanup on unmount
