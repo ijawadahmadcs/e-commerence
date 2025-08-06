@@ -3,11 +3,12 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const images = [
-  "/images/joystick.webp",
-  "/images/earphones.jpeg",
-  "/images/headphones.jpeg",
-  "/images/mobile.jpeg",
-  "/images/tablet.jpeg",
+  "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692947383286-714WUJlhbLS._SL1500_.jpg",
+  "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692255251854-xbox.jpg",
+  "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692257709689-logitech heaphone.jpg",
+  "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692941008275-headphone3.jpg",
+  "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691056487173-headphon2.jpg",
+  "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691057474498-earphone.jpg"
 ];
 
 const Slider = () => {

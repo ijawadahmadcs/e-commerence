@@ -2,11 +2,10 @@ import Container from "../Container/Container";
 import Product from "../Product/Product";
 
 export default async function RecentlyAdded(){
-    const res = await fetch("https://fakestoreapi.in/api/products?limit=6");
+    const res = await fetch("https://fakestoreapi.in/api/products?limit=12");
     const data = await res.json();
-    console.log(data);
   return (
-    <div className="bg-gray-100">
+    <div className="">
       <Container>
         <h1 className="text-center text-2xl font-bold text-gray-700">
           Recently Added Products

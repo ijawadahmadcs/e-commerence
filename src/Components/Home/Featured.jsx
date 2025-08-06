@@ -3,11 +3,10 @@ import Container from '../Container/Container'
 import Product from '../Product/Product'
 
 export default async function Featured() {
-  const response = await fetch('https://fakestoreapi.in/api/products?limit=6');
+  const response = await fetch('https://fakestoreapi.in/api/products?limit=8');
   const data = await response.json();
-  console.log(data)
   return (
-    <Container>
+    <Container className='bg-gray-100'>
       <h1 className="text-center text-2xl font-bold text-gray-700">
         Featured Products
       </h1>

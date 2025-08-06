@@ -1,12 +1,10 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 const Product = ({ product }) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow-lg transition 0.3 ease">
-      <Link href={`/store/${product.id}`}>
+      <Link href={`/product/${product.id}`}>
         <Image
           width={300}
           height={150}

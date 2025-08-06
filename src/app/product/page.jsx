@@ -16,7 +16,6 @@ export default StorePage;
 const CategoryListing = async () => {
   const response = await fetch("https://fakestoreapi.in/api/products/category");
   const data = await response.json();
-  console.log(data.categories);
   return (
     <div className="">
       <p className="text-xl font-bold text-gray-700 p-2">Categories</p>
