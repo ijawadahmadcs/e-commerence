@@ -41,7 +41,7 @@ const Navbar = () => {
           <Link href="/">Home</Link>
         </li>
         <li className="text-gray-700 hover:pink-500 transition-colors duration-300">
-          <Link href="/Store">Store</Link>
+          <Link href="/store">Store</Link>
         </li>
       </ul>
 
