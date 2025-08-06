@@ -1,19 +1,10 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import Container from "../Container/Container";
 import Product from "../Product/Product";
 
-const RecentlyAdded = () => {
-  const [products, setProucts] = useState([]);
-  const getProducts = async () => {
-    const res = await fetch("https://fakestoreapi.in/api/products?limit=12");
+export default async function RecentlyAdded(){
+    const res = await fetch("https://fakestoreapi.in/api/products?limit=6");
     const data = await res.json();
     console.log(data);
-    setProucts(data.products)
-  };
-  useEffect(() => {
-    getProducts();
-  }, []);
   return (
     <div className="bg-gray-100">
       <Container>
@@ -22,7 +13,7 @@ const RecentlyAdded = () => {
         </h1>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {
-            products.map((prod)=>{
+            data.products.map((prod)=>{
               return <Product key={prod.id} product={prod}/>
             })
           }
@@ -31,5 +22,3 @@ const RecentlyAdded = () => {
     </div>
   );
 };
-
-export default RecentlyAdded;
