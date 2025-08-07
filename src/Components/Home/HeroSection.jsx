@@ -1,6 +1,7 @@
 import React from 'react'
 import Slider from './Slider'
 import Container from '../Container/Container'
+import Link from 'next/link'
 const HeroSection = () => {
   return (
     <>
@@ -12,7 +13,8 @@ const HeroSection = () => {
         </h1>
         <p className='text-1xl font-medium'>Discover the latest headphones, earphones, mobiles, tablets etc.</p>
         <p className='text-1xl font-medium'>Exclusive deals just for you!</p>
-        <button className='bg-gray-400 text-white px-4 py-2 rounder-md hover:bg-pink-700 transition duration-300'>Shop Now</button>
+        <Link href="/product">
+        <button className='bg-gray-400 text-white px-4 py-2 rounder-md hover:bg-pink-700 transition duration-300'>Shop Now</button></Link>
       </div>
        <Slider/>
     </section>

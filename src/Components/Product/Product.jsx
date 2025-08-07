@@ -1,7 +1,11 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 const Product = ({ product }) => {
+  const goToCart=(()=>{
+     alert("added to card");
+  })
   return (
     <div className="bg-white p-4 rounded-lg shadow-lg transition 0.3 ease m-1">
       <Link href={`/product/${product.id}`}>
@@ -38,10 +42,10 @@ const Product = ({ product }) => {
         </div>
 
         <p className="mt-3 text-lg font-bold text-pink-600">${product.price}</p>
-
-        <button className="bg-pink-500 text-white px-3 py-1 rounder-md hover:bg-pink-700 transition duration-300 mt-2">
-          Buy Now
-        </button>
+          <button onClick={goToCart} className="bg-pink-500 text-white px-3 py-1 rounder-md hover:bg-pink-700 transition duration-300 mt-2">
+            Add-to-Cart
+          </button>
+    
       </div>
     </div>
   );

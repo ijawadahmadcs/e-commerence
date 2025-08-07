@@ -21,8 +21,8 @@ const Slider = () => {
     return () => clearInterval(interval); // cleanup on unmount
   }, []);
   return (
-    <div className="flex-1 max-w-[50%] overflow-hidden relative h-[450px] flex justify-center items-center">
-      <div className="flex relative h-full w-full">
+    <div className="flex-1 max-w-[50%] overflow-hidden relative h-[450px] flex justify-center items-center border-1 border-pink-400 rounded-full">
+      <div className="flex relative h-full w-full ">
         {images.map((image, index) => {
           return (
             <Image

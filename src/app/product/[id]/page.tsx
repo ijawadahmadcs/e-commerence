@@ -9,7 +9,7 @@ export default async function ProductPage({ params }) {
   const product = data.product;
 
   return (
-    <Container className="py-10">
+    <Container className="py-10 min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Product Image */}
         <div className="w-full h-[400px] relative">
