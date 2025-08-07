@@ -4,7 +4,8 @@ import "./globals.css";
 import Header from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
 import { ThemeProvider } from "next-themes";
-
+import { CartProvider } from "@/CartContext/CartContext";
+import ClientOnly from "@/Components/Clientonly/Clientonly"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Click & Pick",
-  description: "Bas click karo, ghar lao!",
+  description: "Online shooping platform",
 };
 
 export default function RootLayout({
@@ -30,12 +31,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        
-    <ThemeProvider >
-        <Header/>
-        {children}
-        <Footer/>
-         </ThemeProvider>
+        <ClientOnly>
+        <ThemeProvider>
+          <CartProvider>
+            <Header />
+            {children}
+            <Footer />
+          </CartProvider>
+        </ThemeProvider>
+        </ClientOnly>
       </body>
     </html>
   );

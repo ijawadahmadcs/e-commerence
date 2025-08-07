@@ -13,7 +13,6 @@ const Footer = () => {
           <a href="#" className="hover:font-bold transition">Terms</a>
           <a href="#" className="hover:font-bold transition">Contact</a>
         </div>
-        
       </div>
     </footer>
   );
