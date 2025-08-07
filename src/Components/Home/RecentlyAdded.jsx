@@ -7,7 +7,7 @@ export default async function RecentlyAdded(){
   return (
     <div className="">
       <Container>
-        <h1 className="text-center text-2xl font-bold text-gray-700">
+        <h1 className="text-center text-2xl font-bold text-gray-700 p-6">
           Recently Added Products
         </h1>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

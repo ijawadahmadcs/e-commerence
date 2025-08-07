@@ -8,7 +8,7 @@ const HeroSection = () => {
     <section className="flex items-center justify-between px-8 py-16 rounded-[12px]">
       <div className={`flex-1 max-w-1/2 text-gray-700`}>
         <h1 className='text-4xl font-bold mb-4'>
-          One stop slution <span className='text-pink-500'>E-Store</span>
+          Bas click karo, ghar lao!<span className='text-pink-500'>Click <span className='text-3xl'>&</span> Pick</span>
         </h1>
         <p className='text-1xl font-medium'>Discover the latest headphones, earphones, mobiles, tablets etc.</p>
         <p className='text-1xl font-medium'>Exclusive deals just for you!</p>
