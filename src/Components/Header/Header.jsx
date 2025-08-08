@@ -2,7 +2,7 @@ import React from "react";
 import Container from "../Container/Container";
 import Link from "next/link";
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
-import Theme from "@/Components/Theme/theme"
+import Theme from "@/Components/Theme/theme";
 const Header = () => {
   return (
     <header className={`py-3 px-1 shadow `}>
@@ -25,7 +25,7 @@ const Header = () => {
             <FiSearch size={18} />
           </button>
         </div>
-        <Navbar/>
+        <Navbar />
       </Container>
     </header>
   );
@@ -38,7 +38,7 @@ const Navbar = () => {
     <nav className="flex items-center gap-5 md:gap-6 mt-5">
       <ul className="flex items-center gap-5 font-semibold">
         <li className="text-gray-700 hover:text-pink-500 transition-colors duration-300">
-          <Link href="/">Home</Link>
+          <Link href="/firstpage">Home</Link>
         </li>
         <li className="text-gray-700 hover:text-pink-500 transition-colors duration-300">
           <Link href="/product">Products</Link>
@@ -49,12 +49,12 @@ const Navbar = () => {
         <Link href="/cart">
           <div className="relative">
             <FiShoppingCart size={24} />
-            <span className={`absolute top-[-10px] right-[-10px] bg-pink-500 text-white text-xs font-bold rounded-full w-3 h-3 flex items-center justify-center`}>
-              
-            </span>
+            <span
+              className={`absolute top-[-10px] right-[-10px] bg-pink-500 text-white text-xs font-bold rounded-full w-3 h-3 flex items-center justify-center`}
+            ></span>
           </div>
         </Link>
-        <Theme/>
+        <Theme />
       </div>
     </nav>
   );
