@@ -6,7 +6,7 @@ const Error = () => {
    <>
    <Container>
     <h1 className="text-center text-2xl my-4 font-bold">
-        Server Crashed
+        {/* Server Crashed */}
     </h1>
    </Container>
    </>
