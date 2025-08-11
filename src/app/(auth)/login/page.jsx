@@ -33,7 +33,7 @@ const router = useRouter();
           Welcome Back
         </h2>
 
-        <form className="flex flex-col gap-5" onSubmit={handleLogin}>
+        <form className="flex flex-col gap-5">
           <div>
             <label className="block text-gray-700 font-medium mb-1">
               Email
@@ -98,12 +98,12 @@ export default Login;
 
     if (res.ok) {
       localStorage.setItem("token", data.token); // Save token
-      setMessage("✅ Login successful!");
+      setMessage("Login successful!");
     } else {
-      setMessage(`❌ ${data.error}`);
+      setMessage(`${data.error}`);
     }
   } catch (error) {
-    setMessage("❌ Something went wrong");
+    setMessage("Something went wrong");
   }
 };
  */

@@ -1,8 +1,6 @@
 import Container from "@/Components/Container/Container";
 import Product from "@/Components/Product/Product";
-
-export default async function Type({ params }) {
-  const { type } =  params;
+export default async function Type({ params: { type } }) {
   const response = await fetch(
     `https://fakestoreapi.in/api/products/category?type=${type}`
   );

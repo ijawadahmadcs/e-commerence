@@ -35,7 +35,7 @@ export default Header;
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center gap-5 md:gap-6 mt-5">
+    <nav className="flex items-center gap-5 md:gap-6 mt-5 md:justify-between">
       <ul className="flex items-center gap-5 font-semibold">
         <li className="text-gray-700 hover:text-pink-500 transition-colors duration-300">
           <Link href="/firstpage">Home</Link>

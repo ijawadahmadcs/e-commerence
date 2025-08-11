@@ -3,17 +3,19 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/CartContext/CartContext";
+import toast, { Toaster } from "react-hot-toast";
+
 const Product = ({ product }) => {
  const { addToCart } = useCart();
   return (
-    <div className="bg-white p-4 rounded-lg shadow-lg transition 0.3 ease m-1">
+    <div className="bg-white p-4 rounded-lg shadow-lg transition duration-300 ease-in m-1">
       <Link href={`/product/${product.id}`}>
         <Image
           width={300}
           height={150}
           src={product.image}
           alt={product.title}
-          className={"w-full h-48 object-cover rounded-md transition 0.3s ease"}
+          className={"w-full h-48 object-cover rounded-md"}
         />
       </Link>
       <div className="mt-4">

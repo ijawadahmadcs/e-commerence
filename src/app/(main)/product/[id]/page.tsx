@@ -2,8 +2,7 @@ import Container from "@/Components/Container/Container";
 import Image from "next/image";
 import React from "react";
 
-export default async function ProductPage({ params }) {
-  const { id } = params;
+export default async function ProductPage({ params: { id } }) {
   const response = await fetch(`https://fakestoreapi.in/api/products/${id}`);
   const data = await response.json();
   const product = data.product;
