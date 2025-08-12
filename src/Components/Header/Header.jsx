@@ -1,8 +1,9 @@
 import React from "react";
 import Container from "../Container/Container";
 import Link from "next/link";
-import { FiSearch, FiShoppingCart } from "react-icons/fi";
+import { FiSearch, FiShoppingCart, FiLogOut } from "react-icons/fi";
 import Theme from "@/Components/Theme/theme";
+import { useCart } from "@/CartContext/CartContext";
 const Header = () => {
   return (
     <header className={`py-3 px-1 shadow `}>
@@ -48,7 +49,7 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         <Link href="/cart">
           <div className="relative">
-            <FiShoppingCart size={24} />
+            <FiShoppingCart size={24}/>
             <span
               className={`absolute top-[-10px] right-[-10px] bg-pink-500 text-white text-xs font-bold rounded-full w-3 h-3 flex items-center justify-center`}
             ></span>

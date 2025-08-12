@@ -1,9 +1,14 @@
 "use client";
 import { useCart } from "@/CartContext/CartContext";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, clearCart, getCartTotal, getItemCount } =
-    useCart();
+  const { cartItems, removeFromCart, clearCart, getCartTotal, getItemCount } = useCart();
+  const router = useRouter();
+
+  const Checkout = () => {
+    router.push("/checkout");
+  };
 
   return (
     <div className="flex justify-center py-10 min-h-screen ">
@@ -16,14 +21,14 @@ const Cart = () => {
           <p className="text-gray-500 text-center">Your cart is empty.</p>
         ) : (
           <>
-            {/* Cart items list */}
+     
             <div className="space-y-4">
               {cartItems.map((item) => (
                 <div
                   key={item.id}
                   className="border border-pink-200 rounded-xl p-4 flex justify-between items-center bg-pink-50/30 shadow-sm hover:shadow-md transition"
                 >
-                  {/* Product Info */}
+              
                   <div className="flex items-center gap-4">
                     <img
                       src={item.image}
@@ -40,7 +45,6 @@ const Cart = () => {
                     </div>
                   </div>
 
-                  {/* Remove Button */}
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition"
@@ -51,7 +55,6 @@ const Cart = () => {
               ))}
             </div>
 
-            {/* Cart summary */}
             <div className="mt-6 p-4 bg-pink-50 rounded-xl shadow-inner">
               <p className="font-semibold text-lg">
                 Total Items:{" "}
@@ -70,7 +73,7 @@ const Cart = () => {
                 Clear Cart
               </button>
               <button
-                onClick={clearCart}
+                onClick={Checkout}
                 className="mt-4 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 w-full"
               >
                 Check Out

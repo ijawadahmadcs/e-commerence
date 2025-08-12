@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/CartContext/CartContext";
 import toast, { Toaster } from "react-hot-toast";
 
+
 const Product = ({ product }) => {
  const { addToCart } = useCart();
   return (
@@ -43,9 +44,9 @@ const Product = ({ product }) => {
         </div>
 
         <p className="mt-3 text-lg font-bold text-pink-600">${product.price}</p>
-          <button onClick={() => addToCart(product)} className="bg-pink-500 text-white px-3 py-1 rounder-md hover:bg-pink-700 transition duration-300 mt-2">Add-to-Cart
+          <button onClick={() => addToCart(product)} className="bg-pink-500 text-white px-3 py-1 rounder-md hover:bg-pink-700 transition duration-300 mt-2 mr-4">Add-to-Cart
           </button>
-    
+         
       </div>
     </div>
   );

@@ -3,12 +3,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-const router = useRouter(); 
+  const router = useRouter();
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -33,7 +33,7 @@ const router = useRouter();
           Welcome Back
         </h2>
 
-        <form className="flex flex-col gap-5">
+        <form className="flex flex-col gap-5" onSubmit={handleLogin}>
           <div>
             <label className="block text-gray-700 font-medium mb-1">
               Email
@@ -51,7 +51,7 @@ const router = useRouter();
               Password
             </label>
             <input
-              onChange={(e)=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Enter your password"
               className="w-full border-2 border-pink-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-pink-400"
@@ -60,14 +60,13 @@ const router = useRouter();
               <p className="pt-4 mr-2 text-pink-600">forgot password!</p>
             </Link>
           </div>
-            <button
-            onClick={handleLogin}
-              type="submit"
-              className="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded font-semibold transition duration-300 w-full"
-            >
-              Login
-            </button>
-       
+          <button
+            type="submit"
+            className="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded font-semibold transition duration-300 w-full"
+          >
+            Login
+          </button>
+
           <p className="text-center text-gray-500 text-sm mt-4">
             Don’t have an account?{" "}
             <Link href="/signup" className="text-pink-500 hover:underline">
@@ -83,27 +82,32 @@ const router = useRouter();
 
 export default Login;
 
+//   const handleLogin = async (e) => {
+//   e.preventDefault();
 
-/* const handleLogin = async (e) => {
-  e.preventDefault();
-  
-  try {
-    const res = await fetch("https://reqres.in/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
+//   try {
+//     const res = await fetch("https://reqres.in/api/login",{
+//       method: "POST",
+//       headers:{
+//         "Content-Type" : "application/json"
+//       },
+//       body: JSON.stringify({
+//         email: email,
+//         password: password
+//       })
+//     })
+//     const data = await res.json();
 
-    const data = await res.json();
-
-    if (res.ok) {
-      localStorage.setItem("token", data.token); // Save token
-      setMessage("Login successful!");
-    } else {
-      setMessage(`${data.error}`);
-    }
-  } catch (error) {
-    setMessage("Something went wrong");
-  }
-};
- */
+//     if (res.ok) {
+//       localStorage.setItem("token", data.token); // Save token
+//       setMessage("Login successful!");
+//        setTimeout(() => {
+//         router.push("/firstpage"); // Redirect after login
+//       }, 1000);
+//     } else {
+//       setMessage(`${data.error}`);
+//     }
+//   } catch (error) {
+//     setMessage("Something went wrong");
+//   }
+// };

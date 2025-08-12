@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from 'next/font/google'
 import "./globals.css";
 import Footer from "@/Components/Footer/Footer";
 import { ThemeProvider } from "next-themes";
 import { CartProvider } from "@/CartContext/CartContext";
-import ClientOnly from "@/Components/Clientonly/Clientonly"
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import ClientOnly from "@/Components/Clientonly/Clientonly";
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: "Click & Pick",
@@ -28,16 +23,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${roboto.className} antialiased`}
       >
-        <ClientOnly>
-        <ThemeProvider>
-          <CartProvider>
-            {children}
-            <Footer />
-          </CartProvider>
-        </ThemeProvider>
-        </ClientOnly>
+        
+          <ClientOnly>
+            <ThemeProvider>
+              <CartProvider>
+          
+                {children}
+ 
+                <Footer />
+              </CartProvider>
+            </ThemeProvider>
+          </ClientOnly>
+      
       </body>
     </html>
   );
