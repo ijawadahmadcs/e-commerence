@@ -1,13 +1,15 @@
-// app/(main)/layout.tsx
 import Header from "@/Components/Header/Header";
-import Footer from "@/Components/Footer/Footer";
+import ProtectedRoute from "@/Components/ProtectedRoute/ProtectedRoute";
 
 export default function MainLayout({ children }) {
   return (
     <>
-      <Header />
-      <main className="min-h-screen">{children}</main>
-
+      <ProtectedRoute>
+        <div>
+          <Header />
+          <main className="min-h-screen">{children}</main>
+        </div>
+      </ProtectedRoute>
     </>
   );
 }

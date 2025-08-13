@@ -6,9 +6,16 @@ import { FiSearch, FiShoppingCart, FiLogOut } from "react-icons/fi";
 import Theme from "@/Components/Theme/theme";
 import { useCart } from "@/CartContext/CartContext";
 import { useRouter } from "next/navigation";
-
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { useAtom } from "jotai";
+import { authTokenAtom } from "@/jotai/atom";
 const Header = () => {
-
   return (
     <header className="py-3 px-1 shadow">
       <Container className="flex justify-between items-center flex-col md:flex-row gap-4">
@@ -28,7 +35,7 @@ const Header = () => {
             <FiSearch size={18} />
           </button>
         </div>
-        <Navbar/>
+        <Navbar />
       </Container>
     </header>
   );
@@ -37,6 +44,14 @@ const Header = () => {
 export default Header;
 
 const Navbar = () => {
+  const [, setToken] = useAtom(authTokenAtom);
+  const router = useRouter();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setToken(null);
+    router.push("/login");
+  };
   return (
     <nav className="flex items-center gap-5 md:gap-6 mt-5 md:justify-between">
       <ul className="flex items-center gap-5 font-semibold">
@@ -52,15 +67,28 @@ const Navbar = () => {
         <Link href="/cart">
           <div className="relative">
             <FiShoppingCart size={24} />
-            <span className="absolute top-[-10px] right-[-10px] bg-pink-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-             
-            </span>
+            <span className="absolute top-[-10px] right-[-10px] bg-pink-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"></span>
           </div>
         </Link>
         <Theme />
-        <button className="relative">
+        <button onClick={handleLogout} className="relative">
           <FiLogOut size={24} />
         </button>
+        {/* <SignedOut>
+          <SignInButton>
+            <button className="border-pink-500 border-2 text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer hover:border-pink-300">
+              Sign In
+            </button>
+          </SignInButton>
+          <SignUpButton>
+            <button className="bg-pink-500 text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer hover:bg-pink-600">
+              Sign Up
+            </button>
+          </SignUpButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn> */}
       </div>
     </nav>
   );

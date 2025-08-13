@@ -2,97 +2,89 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { useAtom } from "jotai";
+import { authTokenAtom } from "@/jotai/atom";
+
+
 const Login = () => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [message, setMessage] = useState("");
-  // const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const router = useRouter();
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
 
-  //   // Dummy credentials
-  //   const dummyEmail = "test@example.com";
-  //   const dummyPassword = "123456";
+  const [, setToken] = useAtom(authTokenAtom);
+ 
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  //   if (email === dummyEmail && password === dummyPassword) {
-  //     setMessage("Login successful!");
-  //     setTimeout(() => {
-  //       router.push("/firstpage"); // Redirect after login
-  //     }, 1000);
-  //     // Normally: Call API to get token & save to localStorage
-  //   } else {
-  //     setMessage("Invalid email or password!");
-  //   }
-  // };
+    const fakeToken = "abcd1234"; 
+    setToken(fakeToken);
+
+
+
+    const dummyEmail = "test@example.com";
+    const dummyPassword = "123456";
+    if (email === dummyEmail && password === dummyPassword) {
+      setMessage("Login successful!");
+      setTimeout(() => {
+        router.push("/firstpage");
+      }, 1000);
+    } else {
+      setMessage("Invalid email or password!");
+    }
+  };
   return (
     <>
+    
       <div className="flex justify-center items-center w-screen h-screen bg-gradient-to-r from-pink-100 via-pink-200 to-pink-300 flex-col">
-        <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">
+        <div className="bg-white shadow-2xl rounded-2xl w-full max-w-md p-8">
+          <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">
             Welcome Back
           </h2>
-        <div className="shadow-2xl rounded-2xl w-full max-w-md p-8">
-          
-         <div className="flex justify-center gap-8 flex-col mt-8">
-           <SignedOut>
-            <SignInButton>
-              <button className="border-pink-500 border-2 text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer hover:border-pink-300">
-                Sign In
-              </button>
-            </SignInButton>
-            <SignUpButton>
-              <button className="bg-pink-500 text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer hover:bg-pink-600">
+          <div className=" flex justify-center gap-8 flex-col mt-8"></div>
+          <form className=" flex flex-col gap-5" onSubmit={handleLogin}>
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">
+                Email
+              </label>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Enter your email"
+                className="w-full border-2 border-pink-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-pink-400 text-black"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">
+                Password
+              </label>
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Enter your password"
+                className="w-full border-2 border-pink-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-pink-400 text-black"
+              />
+              <Link href="/">
+                <p className="pt-4 mr-2 text-pink-600">forgot password!</p>
+              </Link>
+            </div>
+            <button
+              type="submit"
+              className="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded font-semibold transition duration-300 w-full"
+            >
+              Login
+            </button>
+
+            <p className="text-center text-gray-500 text-sm mt-4">
+              Don’t have an account?{" "}
+              <Link href="/signup" className="text-pink-500 hover:underline">
                 Sign Up
-              </button>
-            </SignUpButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-         </div>
-          {/* <form className="flex flex-col gap-5" onSubmit={handleLogin}>
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Email
-            </label>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder="Enter your email"
-              className="w-full border-2 border-pink-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-pink-400 text-black"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Password
-            </label>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Enter your password"
-              className="w-full border-2 border-pink-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-pink-400 text-black"
-            />
-            <Link href="/">
-              <p className="pt-4 mr-2 text-pink-600">forgot password!</p>
-            </Link>
-          </div>
-          <button
-            type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded font-semibold transition duration-300 w-full"
-          >
-            Login
-          </button>
-
-          <p className="text-center text-gray-500 text-sm mt-4">
-            Don’t have an account?{" "}
-            <Link href="/signup" className="text-pink-500 hover:underline">
-              Sign Up
-            </Link>
-          </p>
-        </form> */}
-          {/* {message && <p className="mt-4 text-center">{message}</p>} */}
+              </Link>
+            </p>
+          </form>
+          {message && <p className="mt-4 text-center">{message}</p>}
         </div>
       </div>
     </>
