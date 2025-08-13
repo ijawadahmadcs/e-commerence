@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/Components/Footer/Footer";
 import { ThemeProvider } from "next-themes";
 import { CartProvider } from "@/CartContext/CartContext";
+import {ClerkProvider} from "@clerk/nextjs"
 import ClientOnly from "@/Components/Clientonly/Clientonly";
 const roboto = Roboto({
   weight: '400',
@@ -25,18 +26,17 @@ export default function RootLayout({
       <body
         className={`${roboto.className} antialiased`}
       >
-        
+         <ClerkProvider>
           <ClientOnly>
             <ThemeProvider>
               <CartProvider>
-          
+     
                 {children}
- 
                 <Footer />
               </CartProvider>
             </ThemeProvider>
           </ClientOnly>
-      
+</ClerkProvider>
       </body>
     </html>
   );
