@@ -74,7 +74,7 @@ const Navbar = () => {
         <button onClick={handleLogout} className="relative">
           <FiLogOut size={24} />
         </button>
-        {/* <SignedOut>
+        <SignedOut>
           <SignInButton>
             <button className="border-pink-500 border-2 text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer hover:border-pink-300">
               Sign In
@@ -88,7 +88,7 @@ const Navbar = () => {
         </SignedOut>
         <SignedIn>
           <UserButton />
-        </SignedIn> */}
+        </SignedIn>
       </div>
     </nav>
   );

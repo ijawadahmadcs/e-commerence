@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import Footer from "@/Components/Footer/Footer";
+
 import { ThemeProvider } from "next-themes";
 import { CartProvider } from "@/CartContext/CartContext";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -29,7 +29,7 @@ export default function RootLayout({
             <ThemeProvider>
               <CartProvider>
                 {children}
-                <Footer />
+              
               </CartProvider>
             </ThemeProvider>
           </ClientOnly>
