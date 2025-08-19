@@ -1,5 +1,5 @@
 "use client";
-import { useCart } from "@/CartContext/CartContext";
+import { useCart } from "@/CartContext/CartContext.jsx";
 import { useRouter } from "next/navigation";
 
 const Cart = () => {

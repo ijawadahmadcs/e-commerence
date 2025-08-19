@@ -4,7 +4,7 @@ import Container from "../Container/Container";
 import Link from "next/link";
 import { FiSearch, FiShoppingCart, FiLogOut } from "react-icons/fi";
 import Theme from "@/Components/Theme/theme";
-import { useCart } from "@/CartContext/CartContext";
+import { useCart } from "@/CartContext/CartContext.jsx";
 import { useRouter } from "next/navigation";
 import {
   SignInButton,

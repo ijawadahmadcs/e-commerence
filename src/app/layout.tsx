@@ -3,7 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
-import { CartProvider } from "@/CartContext/CartContext";
+import { CartProvider } from "@/CartContext/CartContext.jsx";
 import { ClerkProvider } from "@clerk/nextjs";
 import ClientOnly from "@/Components/Clientonly/Clientonly";
 const roboto = Roboto({
