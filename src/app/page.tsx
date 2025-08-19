@@ -1,8 +1,12 @@
-import Login from "@/app/(auth)/login/page"
+import FirstPage from "@/app/(main)/firstpage/page";
+import Footer from "@/Components/Footer/Footer";
+import Header from "@/Components/Header/Header";
 export default function Home() {
   return (
     <>
-      <Login/>
+      <Header />
+      <FirstPage />
+      <Footer />
     </>
   );
 }

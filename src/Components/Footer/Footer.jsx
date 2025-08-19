@@ -1,4 +1,7 @@
 "use client"
+
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <footer className="bg-pink-500 text-white py-6 mt-10">
@@ -9,9 +12,10 @@ const Footer = () => {
         </p>
         
         <div className="flex gap-4 text-sm">
-          <a href="#" className="hover:font-bold transition">Privacy</a>
-          <a href="#" className="hover:font-bold transition">Terms</a>
-          <a href="#" className="hover:font-bold transition">Contact</a>
+          <Link href="" className="hover:font-bold transition">Privacy</Link>
+          <Link href="" className="hover:font-bold transition">Terms</Link>
+          <Link href="" className="hover:font-bold transition">Contact</Link>
+          <Link href="/login" className="hover:font-bold transition">Admin Panel</Link>
         </div>
       </div>
     </footer>

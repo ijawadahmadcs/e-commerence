@@ -28,7 +28,7 @@ const Login = () => {
     if (email === dummyEmail && password === dummyPassword) {
       setMessage("Login successful!");
       setTimeout(() => {
-        router.push("/firstpage");
+        router.push("/adminPanel");
       }, 1000);
     } else {
       setMessage("Invalid email or password!");
@@ -40,7 +40,7 @@ const Login = () => {
       <div className="flex justify-center items-center w-screen h-screen bg-gradient-to-r from-pink-100 via-pink-200 to-pink-300 flex-col">
         <div className="bg-white shadow-2xl rounded-2xl w-full max-w-md p-8">
           <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">
-            Welcome Back
+            Admin Login
           </h2>
           <div className=" flex justify-center gap-8 flex-col mt-8"></div>
           <form className=" flex flex-col gap-5" onSubmit={handleLogin}>
@@ -77,12 +77,12 @@ const Login = () => {
               Login
             </button>
 
-            <p className="text-center text-gray-500 text-sm mt-4">
+            {/* <p className="text-center text-gray-500 text-sm mt-4">
               Don’t have an account?{" "}
               <Link href="/signup" className="text-pink-500 hover:underline">
                 Sign Up
               </Link>
-            </p>
+            </p> */}
           </form>
           {message && <p className="mt-4 text-center">{message}</p>}
         </div>
