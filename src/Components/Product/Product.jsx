@@ -2,8 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from "@/CartContext/CartContext.jsx";
-
+import { useCart } from "@/cartContext/cartContext";
 
 
 const Product = ({ product }) => {
