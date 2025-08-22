@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CartProvider, useCart } from "@/cartContext/cartContext";
+import { CartProvider, useCart } from "@/cartContext/cartContext.jsx";
 import { motion } from "framer-motion";
 
 
