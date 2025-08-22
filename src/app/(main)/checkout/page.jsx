@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useCart } from "@/cartContext/cartContext";
+import { CartProvider, useCart } from "@/cartContext/cartContext";
 import { useRouter } from "next/navigation";
 
 export default function CheckoutPage() {

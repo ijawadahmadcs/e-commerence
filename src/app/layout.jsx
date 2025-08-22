@@ -2,7 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
-import { CartProvider } from "@/cartContext/cartContext";
+import { CartProvider, useCart } from "@/cartContext/cartContext";
 import { ClerkProvider } from "@clerk/nextjs";
 import ClientOnly from "@/Components/Clientonly/Clientonly";
 
