@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Container from "../Container/Container";
 import Link from "next/link";
-import { FiSearch, FiShoppingCart, FiLogOut } from "react-icons/fi";
+import { FiSearch, FiShoppingCart, FiLogOut, FiMenu, FiX } from "react-icons/fi";
 import Theme from "@/Components/Theme/theme";
 import { useCart } from "@/cartContext/cartContext";
 import { useRouter } from "next/navigation";
@@ -15,17 +15,17 @@ import {
 } from "@clerk/nextjs";
 import { useAtom } from "jotai";
 import { authTokenAtom } from "@/jotai/atom";
+
 const Header = () => {
   return (
-    <header className="py-3 px-1 shadow">
-      <Container className="flex justify-between items-center flex-col md:flex-row gap-4">
-        <div className="flex items-center w-full md:w-auto justify-center md:justify-start">
-          <span className="text-pink-500 font-bold text-4xl">
-            Click<span className="text-2xl"> & </span>Pick
+    <header className="py-3 px-2 shadow">
+      <Container className="flex justify-between items-center">
+        <div className="flex items-center">
+          <span className="text-pink-500 font-bold text-3xl md:text-4xl">
+             Picksyy
           </span>
         </div>
-
-        <div className="flex-1 max-w-[500px] ml-5 flex items-center mt-4">
+        <div className="hidden md:flex flex-1 max-w-[500px] mx-5">
           <input
             type="text"
             placeholder="Search for products..."
@@ -46,7 +46,8 @@ export default Header;
 const Navbar = () => {
   const [, setToken] = useAtom(authTokenAtom);
   const router = useRouter();
-  const { cartItems } = useCart(); // <-- get cart items (adjust if your context is different)
+  const { cartItems } = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -55,8 +56,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center gap-5 md:gap-6 mt-5 md:justify-between">
-      <ul className="flex items-center gap-5 font-semibold">
+    <nav className="flex items-center gap-4 relative">
+      <ul className="hidden md:flex items-center gap-6 font-semibold">
         <li className="text-gray-700 hover:text-pink-500 transition-colors duration-300">
           <Link href="/firstpage">Home</Link>
         </li>
@@ -69,25 +70,22 @@ const Navbar = () => {
         <Link href="/cart">
           <div className="relative">
             <FiShoppingCart size={24} />
-            {cartItems.length > 0 && (   // only show when > 0
-              <span className="absolute top-[-10px] right-[-10px] bg-pink-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+            {cartItems.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                 {cartItems.length}
               </span>
             )}
           </div>
         </Link>
         <Theme />
-        {/* <button onClick={handleLogout} className="relative">
-          <FiLogOut size={24} />
-        </button> */}
         <SignedOut>
           <SignInButton>
-            <button className="border-pink-500 border-2 text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer hover:border-pink-300">
+            <button className="border-pink-500 border-2 text-ceramic-white rounded-full font-medium text-sm px-3 h-9 hover:border-pink-300 hidden md:inline">
               Sign In
             </button>
           </SignInButton>
           <SignUpButton>
-            <button className="bg-pink-500 text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer hover:bg-pink-600">
+            <button className="bg-pink-500 text-ceramic-white rounded-full font-medium text-sm px-3 h-9 hover:bg-pink-600 hidden md:inline">
               Sign Up
             </button>
           </SignUpButton>
@@ -95,7 +93,43 @@ const Navbar = () => {
         <SignedIn>
           <UserButton />
         </SignedIn>
+        <button
+          className="md:hidden text-gray-700"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+        </button>
       </div>
+      {menuOpen && (
+        <div className="absolute top-14 right-0 w-48 bg-white shadow-lg rounded-lg py-4 px-5 flex flex-col gap-4 md:hidden z-50">
+          <Link
+            href="/firstpage"
+            onClick={() => setMenuOpen(false)}
+            className="text-gray-700 hover:text-pink-500"
+          >
+            Home
+          </Link>
+          <Link
+            href="/product"
+            onClick={() => setMenuOpen(false)}
+            className="text-gray-700 hover:text-pink-500"
+          >
+            Products
+          </Link>
+          <SignedOut>
+            <SignInButton>
+              <button className="border-pink-500 border-2 rounded-md py-1 text-sm">
+                Sign In
+              </button>
+            </SignInButton>
+            <SignUpButton>
+              <button className="bg-pink-500 text-white rounded-md py-1 text-sm">
+                Sign Up
+              </button>
+            </SignUpButton>
+          </SignedOut>
+        </div>
+      )}
     </nav>
   );
 };

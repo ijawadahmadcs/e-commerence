@@ -3,11 +3,20 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/cartContext/cartContext";
+import { motion } from "framer-motion";
 
 
 const Product = ({ product }) => {
  const { addToCart } = useCart();
   return (
+    <motion.div
+  className="bg-white p-4 rounded-lg shadow-lg transition duration-300 ease-in m-1"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.1 }}
+>
     <div className="bg-white p-4 rounded-lg shadow-lg transition duration-300 ease-in m-1">
       <Link href={`/product/${product.id}`}>
         <Image
@@ -48,6 +57,7 @@ const Product = ({ product }) => {
          
       </div>
     </div>
+    </motion.div>
   );
 };
 

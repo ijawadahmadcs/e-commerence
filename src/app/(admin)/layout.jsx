@@ -22,7 +22,7 @@ export default function MainLayout({ children }) {
 }
 
 
-export const NavBar=()=>{
+const NavBar=()=>{
     const [, setToken] = useAtom(authTokenAtom);
   const router = useRouter();
 
