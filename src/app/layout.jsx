@@ -2,7 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
-import { CartProvider, useCart } from "@/cartContext/cartContext";
+import { CartProvider, useCart } from "@/app/cartContext/cartContext";
 import { ClerkProvider } from "@clerk/nextjs";
 import ClientOnly from "@/Components/Clientonly/Clientonly";
 
@@ -20,7 +20,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${roboto.className} antialiased`}>
-        <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+        <ClerkProvider
+          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+        >
           <ClientOnly>
             <ThemeProvider>
               <CartProvider>{children}</CartProvider>

@@ -2,9 +2,15 @@
 import React, { useState } from "react";
 import Container from "../Container/Container";
 import Link from "next/link";
-import { FiSearch, FiShoppingCart, FiLogOut, FiMenu, FiX } from "react-icons/fi";
+import {
+  FiSearch,
+  FiShoppingCart,
+  FiLogOut,
+  FiMenu,
+  FiX,
+} from "react-icons/fi";
 import Theme from "@/Components/Theme/theme";
-import { useCart } from "@/cartContext/cartContext";
+import { useCart } from "@/app/cartContext/cartContext";
 import { useRouter } from "next/navigation";
 import {
   SignInButton,
@@ -22,7 +28,7 @@ const Header = () => {
       <Container className="flex justify-between items-center">
         <div className="flex items-center">
           <span className="text-pink-500 font-bold text-3xl md:text-4xl">
-             Picksyy
+            Picksyy
           </span>
         </div>
         <div className="hidden md:flex flex-1 max-w-[500px] mx-5">

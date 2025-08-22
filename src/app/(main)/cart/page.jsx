@@ -1,9 +1,10 @@
 "use client";
-import { CartProvider, useCart } from "@/cartContext/cartContext";
+import { CartProvider, useCart } from "@/app/cartContext/cartContext";
 import { useRouter } from "next/navigation";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, clearCart, getCartTotal, getItemCount } = useCart();
+  const { cartItems, removeFromCart, clearCart, getCartTotal, getItemCount } =
+    useCart();
   const router = useRouter();
 
   const Checkout = () => {
@@ -21,14 +22,12 @@ const Cart = () => {
           <p className="text-gray-500 text-center">Your cart is empty.</p>
         ) : (
           <>
-     
             <div className="space-y-4">
               {cartItems.map((item) => (
                 <div
                   key={item.id}
                   className="border border-pink-200 rounded-xl p-4 flex justify-between items-center bg-pink-50/30 shadow-sm hover:shadow-md transition"
                 >
-              
                   <div className="flex items-center gap-4">
                     <img
                       src={item.image}
