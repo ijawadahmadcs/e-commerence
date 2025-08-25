@@ -1,34 +1,22 @@
-import { Roboto } from "next/font/google";
-import "./globals.css";
-
-import { ThemeProvider } from "next-themes";
-import { CartProvider, useCart } from "@/app/cartContext/cartContext";
+"use client";
+import { Provider } from "react-redux";
+import store from "@/redux/store";
 import { ClerkProvider } from "@clerk/nextjs";
-import ClientOnly from "@/Components/Clientonly/Clientonly";
-
-const roboto = Roboto({
-  weight: "400",
-  subsets: ["latin"],
-});
-
-export const metadata = {
-  title: "Picksyy",
-  description: "Online shopping platform",
-};
-
-export default function RootLayout({ children }) {
+import "./globals.css";
+// import { PersistGate } from "redux-persist/integration/react";
+export default function Providers({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased`}>
-        <ClerkProvider
-          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-        >
-          <ClientOnly>
-            <ThemeProvider>
-              <CartProvider>{children}</CartProvider>
-            </ThemeProvider>
-          </ClientOnly>
-        </ClerkProvider>
+      <body className={`antialiased bg-white`}>
+         {/* <PersistGate loading={null} persistor={persistor}> */}
+        <Provider store={store}>
+          <ClerkProvider
+            publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+          >
+            {children}
+          </ClerkProvider>
+        </Provider>
+        {/* </PersistGate> */}
       </body>
     </html>
   );

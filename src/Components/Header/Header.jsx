@@ -2,15 +2,10 @@
 import React, { useState } from "react";
 import Container from "../Container/Container";
 import Link from "next/link";
-import {
-  FiSearch,
-  FiShoppingCart,
-  FiLogOut,
-  FiMenu,
-  FiX,
-} from "react-icons/fi";
+import { FiSearch, FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 import Theme from "@/Components/Theme/theme";
-import { useCart } from "@/app/cartContext/cartContext";
+import { useSelector } from "react-redux";
+import { selectCartCount } from "@/redux/slices/cartSlice";
 import { useRouter } from "next/navigation";
 import {
   SignInButton,
@@ -19,8 +14,6 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { useAtom } from "jotai";
-import { authTokenAtom } from "@/jotai/atom";
 
 const Header = () => {
   return (
@@ -50,25 +43,21 @@ const Header = () => {
 export default Header;
 
 const Navbar = () => {
-  const [, setToken] = useAtom(authTokenAtom);
-  const router = useRouter();
-  const { cartItems } = useCart();
+  const cartCount = useSelector(selectCartCount);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-    setToken(null);
-    router.push("/login");
-  };
 
   return (
     <nav className="flex items-center gap-4 relative">
       <ul className="hidden md:flex items-center gap-6 font-semibold">
-        <li className="text-gray-700 hover:text-pink-500 transition-colors duration-300">
-          <Link href="/firstpage">Home</Link>
+        <li>
+          <Link href="/firstpage" className="text-gray-700 hover:text-pink-500">
+            Home
+          </Link>
         </li>
-        <li className="text-gray-700 hover:text-pink-500 transition-colors duration-300">
-          <Link href="/product">Products</Link>
+        <li>
+          <Link href="/product" className="text-gray-700 hover:text-pink-500">
+            Products
+          </Link>
         </li>
       </ul>
 
@@ -76,9 +65,9 @@ const Navbar = () => {
         <Link href="/cart">
           <div className="relative">
             <FiShoppingCart size={24} />
-            {cartItems.length > 0 && (
+            {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                {cartItems.length}
+                {cartCount}
               </span>
             )}
           </div>
@@ -86,12 +75,12 @@ const Navbar = () => {
         <Theme />
         <SignedOut>
           <SignInButton>
-            <button className="border-pink-500 border-2 text-ceramic-white rounded-full font-medium text-sm px-3 h-9 hover:border-pink-300 hidden md:inline">
+            <button className="border-pink-500 border-2 text-sm px-3 h-9 rounded-full">
               Sign In
             </button>
           </SignInButton>
           <SignUpButton>
-            <button className="bg-pink-500 text-ceramic-white rounded-full font-medium text-sm px-3 h-9 hover:bg-pink-600 hidden md:inline">
+            <button className="bg-pink-500 text-white text-sm px-3 h-9 rounded-full">
               Sign Up
             </button>
           </SignUpButton>
@@ -106,36 +95,6 @@ const Navbar = () => {
           {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
         </button>
       </div>
-      {menuOpen && (
-        <div className="absolute top-14 right-0 w-48 bg-white shadow-lg rounded-lg py-4 px-5 flex flex-col gap-4 md:hidden z-50">
-          <Link
-            href="/firstpage"
-            onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-pink-500"
-          >
-            Home
-          </Link>
-          <Link
-            href="/product"
-            onClick={() => setMenuOpen(false)}
-            className="text-gray-700 hover:text-pink-500"
-          >
-            Products
-          </Link>
-          <SignedOut>
-            <SignInButton>
-              <button className="border-pink-500 border-2 rounded-md py-1 text-sm">
-                Sign In
-              </button>
-            </SignInButton>
-            <SignUpButton>
-              <button className="bg-pink-500 text-white rounded-md py-1 text-sm">
-                Sign Up
-              </button>
-            </SignUpButton>
-          </SignedOut>
-        </div>
-      )}
     </nav>
   );
 };

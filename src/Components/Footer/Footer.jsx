@@ -12,8 +12,6 @@ const Footer = () => {
         </p>
         
         <div className="flex gap-4 text-sm">
-          <Link href="" className="hover:font-bold transition">Privacy</Link>
-          <Link href="" className="hover:font-bold transition">Terms</Link>
           <Link href="" className="hover:font-bold transition">Contact</Link>
           <Link href="/login" className="hover:font-bold transition">Admin Panel</Link>
         </div>
